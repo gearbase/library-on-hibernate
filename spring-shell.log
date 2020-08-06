@@ -73,3 +73,30 @@
 1590093317398:getan ""
 1590093377292:getai 6
 1590093428974:help
+1593712481969:getbn Братья Карамазовы 6
+1593712494164:help
+1593712541035:getbn Братья Карамазовы, 6
+1593712562732:getbn "", 6
+1593712588729:getbn "", 6L
+1593712701321:getbn "" 6
+1593712744080:getbn "" --author-id 6
+1593712784773:getbn --author-name "Братья Карамазовы" --author-id 6
+1593713033521:getbn --author-id 6 --author-name "Братья Карамазовы"
+1593713051950:getbn "Братья Карамазовы" --author-id 6L
+1593713066727:getbn "Братья Карамазовы" --author-id 6
+1593713156450:getbn --author-name "Братья Карамазовы" --author-id 6
+1593713186877:getbn --author-name 'Братья Карамазовы' --author-id 6
+1593714718798:getbn --author-name "Братья Карамазовы" --author-id 6
+1593716417944:getbn --author-name Идиот --author-id 6
+1593717487314:getbn --author-name "Братья Карамазовы" --author-id 6
+1593717583960:getbi 1
+1593717604364:help
+1593717617174:bc
+1593717635975:getallb
+1593717674051:getalla
+1593719265907:getallb
+1593719271478:getalla
+1593720504185:stacktrace
+1593720901512:getalla
+1595568722496:get all a
+1595568734685:help
