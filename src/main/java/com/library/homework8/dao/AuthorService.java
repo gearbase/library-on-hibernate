@@ -4,6 +4,7 @@ import com.library.homework8.domain.Author;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AuthorService {
@@ -14,19 +15,21 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    @Transactional
+
     public Author testTest(){
-        Author author = authorRepository.findById(1L).orElseThrow();
-        initializeAuthor(author);
+        //Author author = authorRepository.findById(1L).orElseThrow();
+        //initializeAuthor(author);
         //Hibernate.initialize(author.getGenres());
         // Теперь, когда передаем автора, у него уже получены жанры, поэтому мы можем к ним свободно обращаться
         // в других методах, работая с этим автором. Если НЕ проинициализировать жанры в initializeAuthor,
         // то получим исключение
-        return author;
+        return initializeAuthor();
     }
-
-    private void initializeAuthor(Author author) {
+    @Transactional
+    public Author initializeAuthor() {
+        Author author = authorRepository.findById(1L).orElseThrow();
         Hibernate.initialize(author.getGenres());
+        return author;
     }
 
 }

@@ -22,12 +22,14 @@ class Homework6ApplicationTests {
 
 
 	@Test
-	@Transactional
+	//@Transactional
 	public void testAuthor(){
-		Author author = authorRepository.findById(1L).orElseThrow();
-		Hibernate.initialize(author.getGenres());
-		System.out.println(author.getGenres().size());
-
+		// todo Если вызывающий метод не обернут в @Transactional, то даже, если все обращения к базе происходят
+		//  в вызываемом методе, который обернут в @Transactional, все равно будет LAZY Exception
+		//  Текущий метод не обернут, в AuthorService необернутый метод вызывает обернутый, получаем исключение
+		//  Если текущий метод обернуть, либо обернуть метод testTest() в AuthorService (а текущий не оборачивать),
+		//  то все будет работать. Причем, если обернуть testTest() в AuthorService, то initializeAuthor() можно не оборачивать
+		authorService.testTest();
 		testTest();
 	}
 
