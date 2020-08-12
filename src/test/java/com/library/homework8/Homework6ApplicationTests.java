@@ -14,14 +14,22 @@ import org.springframework.transaction.annotation.Transactional;
 class Homework6ApplicationTests {
 	@Autowired
 	AuthorService authorService;
+	@Autowired
+	AuthorRepository authorRepository;
 	@Test
 	void contextLoads() {
 	}
 
 
 	@Test
+	@Transactional
 	public void testAuthor(){
-		testTest();
+		Author author = authorRepository.findById(1L).orElseThrow();
+		Hibernate.initialize(author.getGenres());
+		System.out.println(author.getGenres().size());
+
+		//todo И с вызовом этого метода тоже работает
+		//testTest();
 	}
 
 	public void testTest(){
