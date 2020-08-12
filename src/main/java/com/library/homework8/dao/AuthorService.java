@@ -19,6 +19,9 @@ public class AuthorService {
         Author author = authorRepository.findById(1L).orElseThrow();
         initializeAuthor(author);
         //Hibernate.initialize(author.getGenres());
+        // Теперь, когда передаем автора, у него уже получены жанры, поэтому мы можем к ним свободно обращаться
+        // в других методах, работая с этим автором. Если НЕ проинициализировать жанры в initializeAuthor,
+        // то получим исключение
         return author;
     }
 

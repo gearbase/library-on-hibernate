@@ -28,12 +28,12 @@ class Homework6ApplicationTests {
 		Hibernate.initialize(author.getGenres());
 		System.out.println(author.getGenres().size());
 
-		//todo И с вызовом этого метода тоже работает
-		//testTest();
+		testTest();
 	}
 
 	public void testTest(){
 		Author author = authorService.testTest();
+		//нет эксепшена, потому что getGenres() инициализировано ранее в сервисе AuthorService
 		int size = author.getGenres().size();
 		System.out.println(size);
 	}
