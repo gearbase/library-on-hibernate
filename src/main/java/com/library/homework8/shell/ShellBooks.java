@@ -1,12 +1,13 @@
+/*
 package com.library.homework8.shell;
 
 import com.library.homework8.dao.BookDAO;
-import com.library.homework8.domain.Book;
+import com.library.homework8.domain.BookEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
-
+*//*
 @ShellComponent
 @RequiredArgsConstructor
 public class ShellBooks {
@@ -20,7 +21,9 @@ public class ShellBooks {
 
     @ShellMethod(key = {"inb", "insertBook"}, value = "insertBook")
     public void insertBook(@ShellOption(value = {"id, ID"}, defaultValue = ShellOption.NULL) Long id, String name) {
-        Book author = new Book(id, name);
+        BookEntity author = new BookEntity();
+        author.setId(id);
+        author.setName(name);
         bookDAO.insert(author);
         System.out.println("Вставлен книга: " + author);
     }
@@ -58,4 +61,4 @@ public class ShellBooks {
         System.out.println("Имя книги" + name + " обновлено на " + newBookName);
     }
 
-}
+}*/

@@ -1,14 +1,17 @@
+/*
 
 package com.library.homework8.shell;
 
 import com.library.homework8.dao.AuthorDAO;
-import com.library.homework8.domain.Author;
+import com.library.homework8.domain.AuthorEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
-@ShellComponent
+import java.util.List;
+*//*
+//@ShellComponent
 @RequiredArgsConstructor
 public class ShellAuthors {
     private final AuthorDAO authorDAO;
@@ -22,21 +25,23 @@ public class ShellAuthors {
     
     @ShellMethod(key = {"ina", "insertAuthor"}, value = "insertAuthor")
     public void insertAuthor(@ShellOption(value = {"id, ID"}, defaultValue = ShellOption.NULL) Long id, String name) {
-        Author author = new Author(id, name);
-        authorDAO.insert(author);
-        System.out.println("Вставлен автор: " + author);
+        AuthorEntity authorEntity = new AuthorEntity();
+        authorEntity.setId(id);
+        authorEntity.setName(name);
+        authorDAO.insert(authorEntity);
+        System.out.println("Вставлен автор: " + authorEntity);
     }
 
     
     @ShellMethod(key = {"getai", "getAuthorById"}, value = "getAuthorById")
-    public Author getAuthorById(Long authorId) {
+    public AuthorEntity getAuthorById(Long authorId) {
         System.out.println("Автор с ID = " + authorId + ": " + authorDAO.getById(authorId));
         return authorDAO.getById(authorId);
     }
 
     
     @ShellMethod(key = {"getan", "getAuthorByName"}, value = "getAuthorByName")
-    public Author getAuthorByName(String authorName) {
+    public AuthorEntity getAuthorByName(String authorName) {
         //System.out.println("Автор с именем = " + authorName + ": " + authorDAO.getAuthorByName(authorName));
         return authorDAO.getAuthorByName(authorName);
     }
@@ -45,7 +50,10 @@ public class ShellAuthors {
     @ShellMethod(key = {"getalla", "getAllAuthors"}, value = "getAllAuthors")
     public void getAllAuthors() {
         System.out.println("Все авторы:");
-        authorDAO.getAllAuthors().forEach(System.out::println);
+        List<AuthorEntity> allAuthors = authorDAO.getAllAuthors();
+        System.out.println(allAuthors.get(0).getAuthorGenres().get(0).getId());
+
+        //authorDAO.getAllAuthors().forEach(authorEntity -> authorEntity.getAuthorGenres().forEach(genre -> System.out.println(genre.getId())));
     }
 
     
@@ -57,10 +65,11 @@ public class ShellAuthors {
 
     
     @ShellMethod(key = {"upa", "updateAuthor"}, value = "updateAuthor")
-    public void updateAuthor(Author oldAuthor, String newAuthorName) {
-        authorDAO.update(oldAuthor, newAuthorName);
-        System.out.println("Обновлено имя автора с ID = " + oldAuthor.getId());
-        System.out.println("Имя " + oldAuthor.getName() + " обновлено на " + newAuthorName);
+    public void updateAuthor(String oldAuthorEntity, String newAuthorName) {
+        authorDAO.update(oldAuthorEntity, newAuthorName);
+        System.out.println("Обновлено имя автора с ID = " + oldAuthorEntity);
+        System.out.println("Имя " + oldAuthorEntity + " обновлено на " + newAuthorName);
     }
 
 }
+*/
