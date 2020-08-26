@@ -15,12 +15,12 @@
 spring:
   jpa:
     database: POSTGRESQL
-    show-sql: true
+    #show-sql: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-      format_sql: true
+        #format_sql: true
       dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     platform: postgres
@@ -29,4 +29,7 @@ spring:
     password: postgres
     driver-class-name: org.postgresql.Driver
 
-
+logging:
+  level:
+    jdbc:
+      sqlonly: info
